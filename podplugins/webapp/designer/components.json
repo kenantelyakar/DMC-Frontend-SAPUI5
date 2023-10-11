@@ -1,0 +1,26 @@
+{
+    "components" : [
+        {
+           "id": "inductionComponentEntry",
+           "type": "VIEW_PLUGIN",
+           "allowMultipleInstances": true,
+           "name": "com.eczacibasi.viewplugins.inductionComponentEntry",
+           "propertyEditor": "com.eczacibasi.viewplugins.inductionComponentEntry.builder.PropertyEditor",
+           "i18n": "com.eczacibasi.viewplugins.inductionComponentEntry.i18n.i18n",
+           "productionProcessEnabled": true,
+           "productionProcessTitle": "Induction Component Entry -DEV",
+           "supportedPodTypes": ["WORK_CENTER","OPERATION", "ORDER", "OTHER", "MONITOR"]
+        },
+      {
+        "id": "batchNcUpload",
+        "type": "VIEW_PLUGIN",
+        "allowMultipleInstances": true,
+        "name": "com.eczacibasi.viewplugins.batchNcUpload",
+        "propertyEditor": "com.eczacibasi.viewplugins.batchNcUpload.builder.PropertyEditor",
+        "i18n": "com.eczacibasi.viewplugins.batchNcUpload.i18n.i18n",
+        "productionProcessEnabled": true,
+        "productionProcessTitle": "Batch NC Upload -DEV",
+        "supportedPodTypes": ["WORK_CENTER","OPERATION", "ORDER", "OTHER", "MONITOR"]
+      }
+    ]
+}

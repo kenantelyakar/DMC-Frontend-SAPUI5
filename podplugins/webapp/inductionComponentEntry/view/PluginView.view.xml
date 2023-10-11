@@ -1,0 +1,106 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:m="sap.m" xmlns="sap.ui.table"
+    controllerName="com.eczacibasi.viewplugins.inductionComponentEntry.controller.PluginView"
+    width="100%" 
+    height="100%">
+    <m:Panel id="podModelPluginPanel" width="100%" height="100%" expandable="false" expanded="true" accessibleRole="Region" backgroundDesign="Transparent">
+        <m:headerToolbar>
+            <m:Toolbar height="3rem" id="closeButtonToolbar">
+                <m:Button id="saveButton" type="Accept" press="onSavePress"
+                          text="{i18n>save}" enabled="false" />
+                <m:ToolbarSpacer/>
+                <m:Button id="closeButton" icon="sap-icon://decline" press="onClosePress"/>
+            </m:Toolbar>
+        </m:headerToolbar>
+        <m:content>
+            <l:BlockLayout id="BlockLayout" background="Dashboard">
+                <l:BlockLayoutRow accentCells="infoRow">
+                    <l:BlockLayoutCell id="maxChargeQty" >
+                        <m:Title text="{i18n>maxChargeQty}" level="H5"/>
+                        <m:Title id="chargeQty" text="-" level="H5"/>
+                    </l:BlockLayoutCell>
+                    <l:BlockLayoutCell id="deleteBlock">
+                        <m:CheckBox text="{i18n>deleteQtyActive}" id="deleteMode" selected="false" />
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+                <l:BlockLayoutRow accentCells="tableRow">
+                    <l:BlockLayoutCell id="infoBar">
+                        <Table id="componentsListTable" rows="{componentsModel>/components}"
+                               selectionMode="MultiToggle" visibleRowCount="7" paste="onPaste"
+                               ariaLabelledBy="title">
+                            <columns>
+                                <Column width="auto">
+                                    <m:Label text="{i18n>tolerance}" />
+                                    <template>
+                                        <m:Text text="{componentsModel>tolerance}" />
+                                    </template>
+                                </Column>
+                                <Column width="auto">
+                                    <m:Label text="{i18n>matCode}" />
+                                    <template>
+                                        <m:Text text="{componentsModel>material}" />
+                                    </template>
+                                </Column>
+                                <Column width="auto">
+                                    <m:Label text="{i18n>matDesc}" />
+                                    <template>
+                                        <m:Text text="{componentsModel>materialDesc}" />
+                                    </template>
+                                </Column>
+                                <Column width="auto">
+                                    <m:Label text="{i18n>maxLimit}" />
+                                    <template>
+                                        <m:ObjectStatus text="{componentsModel>upperLimit}" />
+                                    </template>
+                                </Column>
+                                <Column width="auto">
+                                    <m:Label text="{i18n>theoricQty}" />
+                                    <template>
+                                        <m:Text text="{componentsModel>theoreticQuantity}" />
+                                    </template>
+                                </Column>
+                                <Column width="auto">
+                                    <m:Label text="{i18n>uom}" />
+                                    <template>
+                                        <m:Text text="{componentsModel>uom}" />
+                                    </template>
+                                </Column>
+                                <Column width="auto">
+                                    <m:Label text="{i18n>sumQty}" />
+                                    <template>
+                                        <m:Text text="{componentsModel>sumQty}" />
+                                    </template>
+                                </Column>
+                                <Column width="auto">
+                                    <m:Label text="{i18n>addQty}" />
+                                    <template>
+                                        <m:Input placeholder="{i18n>willAddQty}" liveChange="addInputChanged" enabled="{= ${viewModel>/deleteMode} !== true}"
+                                                 type="Number" value="{componentsModel>userDefQty}"
+                                                 valueState="{componentsModel>valueState}" valueStateText="{componentsModel>valueMessage}" />
+                                    </template>
+                                </Column>
+                                <Column width="auto">
+                                    <m:Label text="{i18n>deleteQty}" />
+                                    <template>
+                                        <m:Input placeholder="{i18n>willDeleteQty}" liveChange="deleteInputChanged" enabled= "{= ${viewModel>/deleteMode} === true}"
+                                                 type="Number" value="{componentsModel>userDeleteQty}"
+                                                 valueState="{componentsModel>valueDeleteState}"
+                                                 valueStateText="{componentsModel>valueDeleteMessage}" />
+                                    </template>
+                                </Column>
+                            </columns>
+                        </Table>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+            </l:BlockLayout>
+        </m:content>
+       <!-- <m:footer>
+            <m:OverflowToolbar>
+                <m:Button id="closeButton" type="Reject" press="onClosePress"
+                          text="{i18n>close}" enabled="true" />
+                <m:ToolbarSpacer />
+                <m:Button id="saveButton" type="Accept" press="onSavePress"
+                          text="{i18n>save}" enabled="false" />
+            </m:OverflowToolbar>
+        </m:footer> -->
+    </m:Panel>
+</mvc:View>

@@ -1,0 +1,39 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:m="sap.m" xmlns="sap.ui.table"	xmlns:u="sap.ui.unified"
+          controllerName="com.eczacibasi.viewplugins.batchNcUpload.controller.PluginView"
+          width="100%" height="100%">
+    <m:Panel id="podModelPluginPanel" width="100%" height="100%" expandable="false" expanded="true" accessibleRole="Region" backgroundDesign="Transparent">
+        <m:content>
+            <l:BlockLayout id="BlockLayout" background="Dashboard">
+                <l:BlockLayoutRow accentCells="infoRow">
+                    <l:BlockLayoutCell id="maxChargeQty" >
+                        <m:Title text="{i18n>title}" level="H3"/>
+                    </l:BlockLayoutCell>
+                    <l:BlockLayoutCell id="infoBar">
+                        <u:FileUploader
+                                id="fileUploader"
+                                name="myFileUpload"
+                                change="handleValueChange"
+                                typeMissmatch="handleTypeMissmatch"
+                                style="Emphasized"
+                                fileType="jpg,xls,xlsx"
+                                placeholder="{i18n>uploadXlsx}"
+                                sameFilenameAllowed="true"
+                                width="25rem">
+                        </u:FileUploader>
+                        <m:Button
+                                text="{i18n>upload}"
+                                press="handleUploadPress"/>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+                <l:BlockLayoutRow accentCells="tableRow">
+                    <l:BlockLayoutCell id="excelTableCell">
+                        <m:Button
+                                icon="sap-icon://add"
+                                press="handleAddRowPress"/>
+                        <m:Table id="excelTable"/>
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+            </l:BlockLayout>
+        </m:content>
+    </m:Panel>
+</mvc:View>

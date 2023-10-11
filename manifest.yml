@@ -1,0 +1,26 @@
+---
+applications:
+- name: EczViewPlugins
+  path: podplugins
+  default-route: true
+  buildpack: nodejs_buildpack
+  memory: 128M
+  properties:
+    httpHeaders:
+      - X-Frame-Options: deny
+    CORS: "[{\"uriPattern\": \"^/podplugins/(.*)$\",\"allowedOrigin\": [
+              {\"host\": \"slv-dmc-dev-002-p1ebyin6.test.execution.us20.dmc.cloud.sap\",\"protocol\": \"https\"},
+              {\"host\": \"slv-dmc-dev-002-p1ebyin6.test.execution.us20.dmc.cloud.sap\",\"protocol\": \"https\"}],
+              \"allowedMethods\": [\"GET\",\"OPTIONS\"],
+              \"allowedHeaders\":[\"Origin\", \"Accept\",\"X-Requested-With\",\"Content-Type\",
+                    \"Access-Control-Request-Method\",\"Access-Control-Request-Headers\",\"Authorization\",
+                    \"X-Sap-Cid\",\"X-Csrf-Token\",\"x-dme-plant\",\"x-dme-industry-type\",\"x-features\"],
+              \"exposeHeaders\": [\"Accept\",\"Authorization\",\"X-Requested-With\",\"X-Sap-Cid\",
+                    \"Access-Control-Allow-Origin\",\"Access-Control-Allow-Credentials\",\"X-Csrf-Token\",
+                    \"Content-Type\",\"x-dme-plant\",\"x-dme-industry-type\",\"x-features\"]}]"
+  services:
+  - name: uaa_EczPodPlugins
+    parameters:
+      path: ./xs-security.json
+
+  - name: dest_EczPodPlugins
