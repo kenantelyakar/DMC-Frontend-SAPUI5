@@ -1,5 +1,4 @@
 .vscode
 .idea
 /node_modules
-package-lock.json
 /podplugins/node_modules/
